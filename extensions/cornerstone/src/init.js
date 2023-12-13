@@ -8,6 +8,8 @@ import measurementServiceMappingsFactory from './utils/measurementServiceMapping
 import dicomSRModule from './tools/modules/dicomSRModule';
 import srModuleId from './tools/id';
 
+import SyncedProbeTool from './tools';
+
 /**
  *
  * @param {Object} servicesManager
@@ -86,6 +88,7 @@ export default function init({ servicesManager, configuration }) {
       csTools.StackScrollTool,
       csTools.StackScrollMouseWheelTool,
       csTools.OverlayTool,
+      SyncedProbeTool,
     ],
   };
 

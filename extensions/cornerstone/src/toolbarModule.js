@@ -149,6 +149,15 @@ const definitions = [
         commandOptions: { toolName: 'DragProbe' },
       },
       {
+        id: 'SyncedProbeTool',
+        label: 'Synced Probe',
+        icon: 'crosshairs',
+        //
+        type: TOOLBAR_BUTTON_TYPES.SET_TOOL_ACTIVE,
+        commandName: 'setToolActive',
+        commandOptions: { toolName: 'SyncedProbeTool' },
+      },
+      {
         id: 'EllipticalRoi',
         label: 'Ellipse',
         icon: 'circle-o',
