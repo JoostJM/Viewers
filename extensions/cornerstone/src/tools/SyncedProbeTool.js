@@ -2,7 +2,7 @@ import csTools, { toolColors, getToolState } from 'cornerstone-tools';
 import cornerstone, {
     updateImage,
 } from 'cornerstone-core';
-import {loadHandlerManager} from "cornerstone-tools/src";
+//import {loadHandlerManager} from "cornerstone/src";
 const BaseTool = csTools.importInternal('base/BaseTool');
 const draw = csTools.importInternal('drawing/draw');
 const drawCircle = csTools.importInternal('drawing/drawCircle');
@@ -184,12 +184,12 @@ function defaultStrategy(evt) {
                     let errorLoadHandler;
 
                     //if (targetElement.element !== undefined) {
-                    if (false) {
+                    /*if (false) {
                         console.info('Using load handlers');
                         startLoadHandler = loadHandlerManager.getStartLoadHandler(targetElement.element);
                         endLoadHandler = loadHandlerManager.getEndLoadHandler(targetElement.element);
                         errorLoadHandler = loadHandlerManager.getEndLoadHandler(targetElement.element);
-                    }
+                    }*/
 
                     //console.info(`Loading image`);
 
