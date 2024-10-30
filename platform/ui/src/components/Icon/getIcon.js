@@ -176,6 +176,9 @@ import { ReactComponent as investigationalUse } from './../../assets/icons/illus
 import { ReactComponent as actionNewDialog } from './../../assets/icons/action-new-dialog.svg';
 import { ReactComponent as iconToolCobbAngle } from './../../assets/icons/tool-cobb-angle.svg';
 import { ReactComponent as iconToolWindowRegion } from './../../assets/icons/tool-window-region.svg';
+import { ReactComponent as iconAx } from './../../assets/icons/icon-ax.svg';
+import { ReactComponent as iconCor } from './../../assets/icons/icon-cor.svg';
+import { ReactComponent as iconSag } from './../../assets/icons/icon-sag.svg';
 
 import CTAAA from './../../assets/icons/CT-AAA.png';
 import CTAAA2 from './../../assets/icons/CT-AAA2.png';
@@ -417,6 +420,10 @@ const ICONS = {
   'layout-common-2x2': layoutCommon2x2,
   'layout-common-2x3': layoutCommon2x3,
   'tab-4d': tab4D,
+
+  'icon-ax': iconAx,
+  'icon-cor': iconCor,
+  'icon-sag': iconSag,
 
   /** New investigational use */
   'illustration-investigational-use': investigationalUse,
