@@ -56,6 +56,10 @@
       "packageName": "@ohif/extension-cornerstone-dicom-rt",
       "default": false,
       "version": "3.0.0"
+    },
+    {
+      "packageName": "iscore-extension",
+      "version": "0.0.1"
     }
   ],
   "modes": [
@@ -83,6 +87,14 @@
       "packageName": "@ohif/mode-basic-dev-mode",
       "default": false,
       "version": "3.0.0"
+    },
+    {
+      "packageName": "iscore-measurements",
+      "version": "0.0.1"
+    },
+    {
+      "packageName": "iscore-pet",
+      "version": "0.0.1"
     }
   ],
   "public": [

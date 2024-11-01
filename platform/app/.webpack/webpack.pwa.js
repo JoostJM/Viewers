@@ -70,6 +70,9 @@ module.exports = (env, argv) => {
         // Hoisted Yarn Workspace Modules
         path.resolve(__dirname, '../../../node_modules'),
         SRC_DIR,
+        path.resolve(__dirname, '/opt/iscore-viewer/extensions/iscore-extension/node_modules'),
+        path.resolve(__dirname, '/opt/iscore-mode/modes/iscore-measurements/node_modules'),
+        path.resolve(__dirname, '/opt/iscore-mode/modes/iscore-pet/node_modules'),
       ],
     },
     plugins: [
