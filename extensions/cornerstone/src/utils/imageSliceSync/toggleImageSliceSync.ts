@@ -90,11 +90,7 @@ function getReconstructableStackViewports(
       const displaySet = displaySetService.getDisplaySetByUID(displaySetInstanceUID);
 
       // TODO - add a better test than isReconstructable
-      if (displaySet && displaySet.isReconstructable) {
-        return true;
-      }
-
-      return false;
+      return !!displaySet;
     }
   });
   return viewports;
