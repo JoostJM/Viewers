@@ -157,6 +157,7 @@ module.exports = (env, argv) => {
       },
       proxy: {
         '/dicomweb': 'http://localhost:5000',
+        '/dicom': 'http://localhost:8080',
       },
       static: [
         {
@@ -180,6 +181,7 @@ module.exports = (env, argv) => {
         'Cross-Origin-Embedder-Policy': 'require-corp',
         'Cross-Origin-Opener-Policy': 'same-origin',
       },
+      allowedHosts: ['localhost', 'iscore.nki.nl'],
     },
   });
 
