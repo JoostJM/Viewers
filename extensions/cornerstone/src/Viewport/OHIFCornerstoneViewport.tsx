@@ -395,6 +395,11 @@ const OHIFCornerstoneViewport = React.memo((props: withAppTypes) => {
     if (appConfig.addWindowLevelActionMenu === false) {
       return;
     }
+    const { viewports } = viewportGridService.getState();
+    const viewportElement = viewports.get(viewportId);
+    if (viewportElement?.viewportOptions.customViewportProps?.hideOverlays) {
+      return;
+    }
 
     // TODO: In the future we should consider using the customization service
     // to determine if and in which corner various action components should go.
