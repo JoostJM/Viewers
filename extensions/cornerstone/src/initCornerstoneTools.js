@@ -26,6 +26,7 @@ import {
   init,
   addTool,
   annotation,
+  ReferenceProbe,
   ReferenceLinesTool,
   TrackballRotateTool,
   AdvancedMagnifyTool,
@@ -43,6 +44,7 @@ import ImageOverlayViewerTool from './tools/ImageOverlayViewerTool';
 
 export default function initCornerstoneTools(configuration = {}) {
   CrosshairsTool.isAnnotation = false;
+  ReferenceProbe.isAnnotation = false;
   ReferenceLinesTool.isAnnotation = false;
   AdvancedMagnifyTool.isAnnotation = false;
   PlanarFreehandContourSegmentationTool.isAnnotation = false;
@@ -72,6 +74,7 @@ export default function initCornerstoneTools(configuration = {}) {
   addTool(CircleScissorsTool);
   addTool(BrushTool);
   addTool(PaintFillTool);
+  addTool(ReferenceProbe);
   addTool(ReferenceLinesTool);
   addTool(CalibrationLineTool);
   addTool(TrackballRotateTool);
@@ -122,6 +125,7 @@ const toolNames = {
   Crosshairs: CrosshairsTool.toolName,
   Brush: BrushTool.toolName,
   PaintFill: PaintFillTool.toolName,
+  ReferenceProbe: ReferenceProbe.toolName,
   ReferenceLines: ReferenceLinesTool.toolName,
   CalibrationLine: CalibrationLineTool.toolName,
   TrackballRotateTool: TrackballRotateTool.toolName,
