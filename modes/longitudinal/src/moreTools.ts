@@ -88,6 +88,14 @@ const moreTools = [
           evaluate: 'evaluate.cornerstoneTool.toggle',
         }),
         createButton({
+          id: 'ReferenceProbe',
+          icon: 'tool-probe',
+          label: 'Reference Probe',
+          tooltip: 'Reference Probe',
+          commands: setToolActiveToolbar,
+          evaluate: 'evaluate.cornerstoneTool',
+        }),
+        createButton({
           id: 'ImageOverlayViewer',
           icon: 'toggle-dicom-overlay',
           label: 'Image Overlay',
