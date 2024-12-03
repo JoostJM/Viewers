@@ -25,7 +25,7 @@ export function updateAuthServiceAndCleanUrl(
   const urlObj = new URL(window.location.origin + window.location.pathname + location.search);
 
   // Remove the token from the URL object
-  urlObj.searchParams.delete('token');
+  //urlObj.searchParams.delete('token');
   const cleanUrl = urlObj.toString();
 
   // Update the browser's history without the token
