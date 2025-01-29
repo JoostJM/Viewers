@@ -91,6 +91,7 @@ function modeFactory({ modeConfiguration }) {
       toolbarService.addButtons(toolbarButtons);
       toolbarService.createButtonSection('primary', [
         'MeasurementTools',
+        'FusionStackScroll',
         'Zoom',
         'WindowLevel',
         'Crosshairs',

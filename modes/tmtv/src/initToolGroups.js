@@ -51,7 +51,7 @@ function _initToolGroups(toolNames, Enums, toolGroupService, commandsManager) {
       { toolName: toolNames.Probe },
       { toolName: toolNames.EllipticalROI },
       { toolName: toolNames.RectangleROI },
-      { toolName: toolNames.StackScroll },
+      { toolName: toolNames.FusionStackScroll },
       { toolName: toolNames.Angle },
       { toolName: toolNames.CobbAngle },
       { toolName: toolNames.Magnify },

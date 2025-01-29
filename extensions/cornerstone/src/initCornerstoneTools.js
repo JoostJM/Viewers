@@ -2,6 +2,7 @@ import {
   PanTool,
   WindowLevelTool,
   StackScrollTool,
+  FusionStackScrollTool,
   VolumeRotateTool,
   ZoomTool,
   MIPJumpToClickTool,
@@ -53,6 +54,7 @@ export default function initCornerstoneTools(configuration = {}) {
   addTool(PanTool);
   addTool(WindowLevelTool);
   addTool(StackScrollTool);
+  addTool(FusionStackScrollTool);
   addTool(VolumeRotateTool);
   addTool(ZoomTool);
   addTool(ProbeTool);
@@ -108,6 +110,7 @@ const toolNames = {
   ArrowAnnotate: ArrowAnnotateTool.toolName,
   WindowLevel: WindowLevelTool.toolName,
   StackScroll: StackScrollTool.toolName,
+  FusionStackScroll: FusionStackScrollTool.toolName,
   Zoom: ZoomTool.toolName,
   VolumeRotate: VolumeRotateTool.toolName,
   MipJumpToClick: MIPJumpToClickTool.toolName,
