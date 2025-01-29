@@ -55,6 +55,17 @@ const toolbarButtons = [
     },
   },
   {
+    id: 'FusionStackScroll',
+    uiType: 'ohif.radioGroup',
+    props: {
+      icon: 'tool-stack-scroll',
+      label: 'Stack Scroll',
+      tooltip: 'Stack Scroll',
+      commands: setToolActiveToolbar,
+      evaluate: 'evaluate.cornerstoneTool',
+    },
+  },
+  {
     id: 'Zoom',
     uiType: 'ohif.radioGroup',
     props: {
