@@ -7,6 +7,12 @@ import InputRange from '../InputRange';
 import { Icons } from '@ohif/ui-next';
 import './CinePlayer.css';
 
+export type CinePlayerDynamicInfo = {
+  dimensionGroupNumber?: number;
+  numDimensionGroups?: number;
+  label?: string;
+};
+
 export type CinePlayerProps = {
   className: string;
   isPlaying: boolean;
@@ -17,12 +23,8 @@ export type CinePlayerProps = {
   onFrameRateChange: (value: number) => void;
   onPlayPauseChange: (value: boolean) => void;
   onClose: () => void;
-  updateDynamicInfo?: () => void;
-  dynamicInfo?: {
-    dimensionGroupNumber: number;
-    numDimensionGroups: number;
-    label?: string;
-  };
+  updateDynamicInfo?: (dynamicInfo: CinePlayerDynamicInfo) => void;
+  dynamicInfo?: CinePlayerDynamicInfo;
 };
 
 const fpsButtonClassNames =
@@ -178,7 +180,6 @@ CinePlayer.propTypes = {
   onPlayPauseChange: PropTypes.func,
   onFrameRateChange: PropTypes.func,
   onClose: PropTypes.func,
-  isDynamic: PropTypes.bool,
   dynamicInfo: PropTypes.shape({
     dimensionGroupNumber: PropTypes.number,
     numDimensionGroups: PropTypes.number,
