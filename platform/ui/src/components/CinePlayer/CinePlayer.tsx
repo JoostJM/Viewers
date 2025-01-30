@@ -7,6 +7,12 @@ import InputRange from '../InputRange';
 import { Icons } from '@ohif/ui-next';
 import './CinePlayer.css';
 
+export type CinePlayerDynamicInfo = {
+  dimensionGroupNumber?: number;
+  numTimePoints?: number;
+  label?: string;
+};
+
 export type CinePlayerProps = {
   className: string;
   isPlaying: boolean;
@@ -17,12 +23,8 @@ export type CinePlayerProps = {
   onFrameRateChange: (value: number) => void;
   onPlayPauseChange: (value: boolean) => void;
   onClose: () => void;
-  updateDynamicInfo?: () => void;
-  dynamicInfo?: {
-    timePointIndex: number;
-    numTimePoints: number;
-    label?: string;
-  };
+  updateDynamicInfo?: (dynamicInfo: CinePlayerDynamicInfo) => void;
+  dynamicInfo?: CinePlayerDynamicInfo;
 };
 
 const fpsButtonClassNames =
@@ -66,7 +68,7 @@ const CinePlayer: React.FC<CinePlayerProps> = ({
         // For demonstration, assuming a hypothetical function that updates the time point index
         updateDynamicInfo({
           ...dynamicInfo,
-          timePointIndex: newIndex,
+          dimensionGroupNumber: newIndex,
         });
       }
     },
@@ -77,10 +79,10 @@ const CinePlayer: React.FC<CinePlayerProps> = ({
     <div className={className}>
       {isDynamic && dynamicInfo && (
         <InputRange
-          value={dynamicInfo.timePointIndex}
+          value={dynamicInfo.dimensionGroupNumber}
           onChange={handleTimePointChange}
-          minValue={0}
-          maxValue={dynamicInfo.numTimePoints - 1}
+          minValue={1}
+          maxValue={dynamicInfo.numTimePoints}
           step={1}
           containerClassName="mb-3 w-full"
           labelClassName="text-xs text-white"
@@ -107,7 +109,7 @@ const CinePlayer: React.FC<CinePlayerProps> = ({
           <div className="min-w-16 max-w-44 flex flex-col text-white">
             {/* Add Tailwind classes for monospace font and center alignment */}
             <div className="text-[11px]">
-              <span className="w-2 text-white">{dynamicInfo.timePointIndex}</span>{' '}
+              <span className="w-2 text-white">{dynamicInfo.dimensionGroupNumber}</span>{' '}
               <span className="text-aqua-pale">{`/${dynamicInfo.numTimePoints}`}</span>
             </div>
             <div className="text-aqua-pale text-xs">{dynamicInfo.label}</div>
@@ -178,9 +180,8 @@ CinePlayer.propTypes = {
   onPlayPauseChange: PropTypes.func,
   onFrameRateChange: PropTypes.func,
   onClose: PropTypes.func,
-  isDynamic: PropTypes.bool,
   dynamicInfo: PropTypes.shape({
-    timePointIndex: PropTypes.number,
+    dimensionGroupNumber: PropTypes.number,
     numTimePoints: PropTypes.number,
     label: PropTypes.string,
   }),

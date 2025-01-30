@@ -55,10 +55,10 @@ function WrappedCinePlayer({
         const { dynamicVolumeInfo } = displaySet;
         const numTimePoints = dynamicVolumeInfo.timePoints.length;
         const label = dynamicVolumeInfo.splittingTag;
-        const timePointIndex = dynamicVolumeInfo.timePointIndex || 0;
+        const dimensionGroupNumber = dynamicVolumeInfo.dimensionGroupNumber || 1;
         setDynamicInfo({
           volumeId: displaySet.displaySetInstanceUID,
-          timePointIndex,
+          dimensionGroupNumber,
           numTimePoints,
           label,
         });
@@ -176,20 +176,25 @@ function RenderCinePlayer({
       return;
     }
 
-    const handleTimePointIndexChange = evt => {
-      const { volumeId, timePointIndex, numTimePoints, splittingTag } = evt.detail;
-      setDynamicInfo({ volumeId, timePointIndex, numTimePoints, label: splittingTag });
+    const handleDimensionGroupNumberChange = evt => {
+      const { volumeId, dimensionGroupNumber, numTimePoints, splittingTag } = evt.detail;
+      setDynamicInfo({
+        volumeId,
+        dimensionGroupNumber,
+        numTimePoints,
+        label: splittingTag,
+      });
     };
 
     eventTarget.addEventListener(
-      Enums.Events.DYNAMIC_VOLUME_TIME_POINT_INDEX_CHANGED,
-      handleTimePointIndexChange
+      Enums.Events.DYNAMIC_VOLUME_DIMENSION_GROUP_CHANGED,
+      handleDimensionGroupNumberChange
     );
 
     return () => {
       eventTarget.removeEventListener(
-        Enums.Events.DYNAMIC_VOLUME_TIME_POINT_INDEX_CHANGED,
-        handleTimePointIndexChange
+        Enums.Events.DYNAMIC_VOLUME_DIMENSION_GROUP_CHANGED,
+        handleDimensionGroupNumberChange
       );
     };
   }, [dynamicInfo]);
@@ -199,17 +204,17 @@ function RenderCinePlayer({
       return;
     }
 
-    const { volumeId, timePointIndex, numTimePoints, splittingTag } = dynamicInfo || {};
+    const { volumeId, dimensionGroupNumber, numTimePoints, splittingTag } = dynamicInfo || {};
     const volume = cache.getVolume(volumeId, true);
-    volume.timePointIndex = timePointIndex;
+    volume.dimensionGroupNumber = dimensionGroupNumber;
 
-    setDynamicInfo({ volumeId, timePointIndex, numTimePoints, label: splittingTag });
+    setDynamicInfo({ volumeId, dimensionGroupNumber, numTimePoints, label: splittingTag });
   }, []);
 
   const updateDynamicInfo = useCallback(props => {
-    const { volumeId, timePointIndex } = props;
+    const { volumeId, dimensionGroupNumber } = props;
     const volume = cache.getVolume(volumeId, true);
-    volume.timePointIndex = timePointIndex;
+    volume.dimensionGroupNumber = dimensionGroupNumber;
   }, []);
 
   return (
