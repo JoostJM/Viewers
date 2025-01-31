@@ -101,6 +101,7 @@ function modeFactory({ modeConfiguration }) {
       toolbarService.createButtonSection('primary', [
         'MeasurementTools',
         'Zoom',
+        'StackScroll',
         'Pan',
         'TrackballRotate',
         'WindowLevel',
