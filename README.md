@@ -1,5 +1,4 @@
 <!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
 <div align="center">
   <h1>OHIF Medical Imaging Viewer</h1>
   <p><strong>The OHIF Viewer</strong> is a zero-footprint medical image viewer
@@ -135,18 +134,20 @@ Here is a schematic representation of our development workflow:
 
 ### Requirements
 
-- [Yarn 1.17.3+](https://yarnpkg.com/en/docs/install)
+- [Yarn 1.20.0+](https://yarnpkg.com/en/docs/install)
 - [Node 18+](https://nodejs.org/en/)
 - Yarn Workspaces should be enabled on your machine:
   - `yarn config set workspaces-experimental true`
 
 ### Getting Started
 
-1. Clone the repository
-   - `git clone https://github.com/OHIF/Viewers.git`
-2. Navigate to the cloned project's directory
-3. `yarn install` to restore dependencies and link projects
-4. `yarn dev` to start the development server
+1. [Fork this repository][how-to-fork]
+2. [Clone your forked repository][how-to-clone]
+   - `git clone https://github.com/YOUR-USERNAME/Viewers.git`
+3. Navigate to the cloned project's directory
+4. Add this repo as a `remote` named `upstream`
+   - `git remote add upstream https://github.com/OHIF/Viewers.git`
+5. `yarn install` to restore dependencies and link projects
 
 #### To Develop
 
@@ -166,15 +167,16 @@ These commands are available from the root directory. Each project directory
 also supports a number of commands that can be found in their respective
 `README.md` and `package.json` files.
 
-| Commands                | Description                                                   |
+| Yarn Commands                | Description                                                   |
 | ---------------------------- | ------------------------------------------------------------- |
 | **Develop**                  |                                                               |
-| `dev` or `start`             | Default development experience for Viewer                     |
+| `dev`              | Default development experience for Viewer                     |
+| `dev:fast`             | Our experimental fast dev mode that uses rsbuild instead of webpack                     |
 | `test:unit`                  | Jest multi-project test runner; overall coverage              |
 | **Deploy**                   |                                                               |
 | `build`\*                    | Builds production output for our PWA Viewer                   |  |
 
-\* - For more information on our different builds, check out our [Deploy
+\* - For more information on different builds, check out our [Deploy
 Docs][deployment-docs]
 
 ## Project
