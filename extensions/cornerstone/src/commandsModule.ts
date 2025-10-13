@@ -547,11 +547,20 @@ function commandsModule({
       const labelConfig = customizationService.getCustomization('measurementLabels');
       const renderContent = customizationService.getCustomization('ui.labellingComponent');
 
-      const value = await callInputDialogAutoComplete({
-        uiDialogService,
-        labelConfig,
-        renderContent,
-      });
+      let value: string;
+      if (labelConfig?.items?.length > 0) {
+        value = await callInputDialogAutoComplete({
+          uiDialogService,
+          labelConfig,
+          renderContent,
+        });
+      } else {
+        value = await callInputDialog({
+          uiDialogService,
+          title: 'Annotation',
+          placeholder: 'Label',
+        });
+      }
       callback?.(value);
     },
 
