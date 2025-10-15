@@ -27,6 +27,7 @@ import {
   init,
   addTool,
   annotation,
+  ReferenceProbe,
   ReferenceLinesTool,
   TrackballRotateTool,
   AdvancedMagnifyTool,
@@ -42,6 +43,7 @@ import {
   RegionSegmentPlusTool,
   SegmentLabelTool,
 } from '@cornerstonejs/tools';
+import * as csTools from '@cornerstonejs/tools';
 import { LabelmapSlicePropagationTool, MarkerLabelmapTool } from '@cornerstonejs/ai';
 import * as polySeg from '@cornerstonejs/polymorphic-segmentation';
 
@@ -52,6 +54,7 @@ export default function initCornerstoneTools(configuration = {}) {
   CrosshairsTool.isAnnotation = false;
   LabelmapSlicePropagationTool.isAnnotation = false;
   MarkerLabelmapTool.isAnnotation = false;
+  ReferenceProbe.isAnnotation = false;
   ReferenceLinesTool.isAnnotation = false;
   AdvancedMagnifyTool.isAnnotation = false;
   PlanarFreehandContourSegmentationTool.isAnnotation = false;
@@ -91,6 +94,7 @@ export default function initCornerstoneTools(configuration = {}) {
   addTool(CircleScissorsTool);
   addTool(BrushTool);
   addTool(PaintFillTool);
+  addTool(ReferenceProbe);
   addTool(ReferenceLinesTool);
   addTool(CalibrationLineTool);
   addTool(TrackballRotateTool);
@@ -146,6 +150,7 @@ const toolNames = {
   Crosshairs: CrosshairsTool.toolName,
   Brush: BrushTool.toolName,
   PaintFill: PaintFillTool.toolName,
+  ReferenceProbe: ReferenceProbe.toolName,
   ReferenceLines: ReferenceLinesTool.toolName,
   CalibrationLine: CalibrationLineTool.toolName,
   TrackballRotateTool: TrackballRotateTool.toolName,

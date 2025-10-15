@@ -38,6 +38,8 @@ import { ToggleGroup, ToggleGroupItem } from './ToggleGroup';
 import { Input } from './Input';
 import { InputNumber } from './InputNumber';
 import { Label } from './Label';
+import { LayoutSelector } from './LayoutSelector'
+import NavBar from './NavBar'
 import { Switch } from './Switch';
 import { Checkbox } from './Checkbox';
 import { Slider } from './Slider';
@@ -170,6 +172,8 @@ export {
   Input,
   InputNumber,
   Label,
+  LayoutSelector,
+  NavBar,
   Tabs,
   TabsContent,
   TabsList,

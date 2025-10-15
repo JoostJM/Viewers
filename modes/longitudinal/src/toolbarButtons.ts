@@ -314,6 +314,17 @@ const toolbarButtons: Button[] = [
     },
   },
   {
+    id: 'ReferenceProbe',
+    uiType: 'ohif.toolButton',
+    props: {
+      icon: 'tool-probe',
+      label: 'Reference Probe',
+      tooltip: 'Reference Probe',
+      commands: setToolActiveToolbar,
+      evaluate: 'evaluate.cornerstoneTool',
+    },
+  },
+  {
     id: 'Probe',
     uiType: 'ohif.toolButton',
     props: {

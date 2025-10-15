@@ -63,6 +63,7 @@ function initDefaultToolGroup(extensionManager, toolGroupService, commandsManage
       },
       { toolName: toolNames.Bidirectional },
       { toolName: toolNames.DragProbe },
+      { toolName: toolNames.ReferenceProbe },
       { toolName: toolNames.Probe },
       { toolName: toolNames.EllipticalROI },
       { toolName: toolNames.CircleROI },

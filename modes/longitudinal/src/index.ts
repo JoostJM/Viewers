@@ -151,6 +151,7 @@ function modeFactory({ modeConfiguration }) {
         'ImageOverlayViewer',
         'StackScroll',
         'invert',
+        'ReferenceProbe',
         'Probe',
         'Cine',
         'Angle',
