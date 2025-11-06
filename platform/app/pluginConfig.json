@@ -65,6 +65,10 @@
     {
       "packageName": "@ohif/extension-ultrasound-pleura-bline",
       "version": "3.0.0"
+    },
+    {
+      "packageName": "iscore-extension",
+      "version": "0.0.1"
     }
   ],
   "modes": [
@@ -96,6 +100,14 @@
     {
       "packageName": "@ohif/mode-ultrasound-pleura-bline",
       "version": "3.0.0"
+    },
+    {
+      "packageName": "iscore-measurements",
+      "version": "0.0.1"
+    },
+    {
+      "packageName": "iscore-pet",
+      "version": "0.0.1"
     }
   ],
   "public": [
