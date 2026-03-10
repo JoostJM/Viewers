@@ -65,6 +65,7 @@ const LivewireContour = {
       frameNumber,
       referenceSeriesUID: SeriesInstanceUID,
       referenceStudyUID: StudyInstanceUID,
+      referencedImageId,
       toolName: metadata.toolName,
       displaySetInstanceUID: displaySet.displaySetInstanceUID,
       label: data.label,
@@ -127,15 +128,18 @@ function getColumnValueReport(annotation, customizationService) {
 function getDisplayText(annotation, displaySet) {
   const { metadata, data } = annotation;
 
+  const displayText = {
+    primary: [],
+    secondary: [],
+  };
+
   if (!data.cachedStats || !data.cachedStats[`imageId:${metadata.referencedImageId}`]) {
-    return [];
+    return displayText;
   }
 
   const { area, areaUnit } = data.cachedStats[`imageId:${metadata.referencedImageId}`];
 
   const { SOPInstanceUID, frameNumber } = getSOPInstanceAttributes(metadata.referencedImageId);
-
-  const displayText = [];
 
   const instance = displaySet.instances.find(image => image.SOPInstanceUID === SOPInstanceUID);
   let InstanceNumber;
@@ -152,20 +156,14 @@ function getDisplayText(annotation, displaySet) {
     seriesText = `S: ${SeriesNumber}${instanceText}${frameText}`;
   }
 
-  const texts = [];
   if (area) {
     const roundedArea = utils.roundNumber(area || 0, 2);
-    texts.push(`${roundedArea} ${getDisplayUnit(areaUnit)}`);
+    displayText.primary.push(`${roundedArea} ${getDisplayUnit(areaUnit)}`);
   }
 
   if (seriesText) {
-    texts.push(seriesText);
+    displayText.secondary.push(seriesText);
   }
-
-  displayText.push({
-    text: texts,
-    series: seriesText,
-  });
 
   return displayText;
 }
