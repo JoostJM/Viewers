@@ -7,6 +7,7 @@ import {
   BaseVolumeViewport,
 } from '@cornerstonejs/core';
 import {
+  cancelActiveManipulations,
   ToolGroupManager,
   Enums,
   utilities as cstUtils,
@@ -1539,6 +1540,9 @@ function commandsModule({
 
     deleteActiveAnnotation: () => {
       const activeAnnotationsUID = cornerstoneTools.annotation.selection.getAnnotationsSelected();
+      const element = _getActiveViewportEnabledElement()?.viewport?.element;
+      cancelActiveManipulations(element);
+
       activeAnnotationsUID.forEach(activeAnnotationUID => {
         measurementService.remove(activeAnnotationUID);
       });
