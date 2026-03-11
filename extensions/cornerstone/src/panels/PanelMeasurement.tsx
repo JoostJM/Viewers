@@ -3,6 +3,9 @@ import { useSystem } from '@ohif/core';
 
 import { useMeasurements } from '../hooks/useMeasurements';
 import StudyMeasurements from '../components/StudyMeasurements';
+
+import { ScrollArea } from '@ohif/ui-next';
+
 /**
  * The PanelMeasurement is a fairly simple wrapper that gets the filtered
  * measurements and then passes it on to the children component, default to
@@ -83,5 +86,9 @@ export default function PanelMeasurement(props): React.ReactNode {
     return cloned;
   }
   // Need to merge defaults on the content props to ensure they get passed to children
-  return <StudyMeasurements items={displayMeasurements} />;
+  return (
+    <ScrollArea>
+      <StudyMeasurements items={displayMeasurements} />
+    </ScrollArea>
+  );
 }
