@@ -209,11 +209,16 @@ function getDisplayText(mappedAnnotations, displaySet) {
   displayText.primary.push(`${roundedArea} ${getDisplayUnit(areaUnit)}`);
 
   mappedAnnotations.forEach(mappedAnnotation => {
-    const { unit, max, SeriesNumber } = mappedAnnotation;
+    const { unit, max, SeriesNumber, length } = mappedAnnotation;
 
-    const maxStr = getStatisticDisplayString(max, unit, 'max');
+    if (!isNaN(max)) {
+      const maxStr = getStatisticDisplayString(max, unit, 'max');
+      displayText.primary.push(maxStr);
+    } else if (length && !isNaN(length)) {
+      const lengthStr = getStatisticDisplayString(max, unit, 'length');
+      displayText.primary.push(lengthStr);
+    }
 
-    displayText.primary.push(maxStr);
     displayText.secondary.push(`S: ${SeriesNumber}${instanceText}${frameText}`);
   });
 
