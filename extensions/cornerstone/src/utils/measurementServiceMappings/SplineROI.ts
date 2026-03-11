@@ -117,7 +117,8 @@ function getMappedAnnotations(annotation, displaySetService) {
     const displaySet = displaySetService.getDisplaySetsForSeries(SeriesInstanceUID)[0];
 
     const { SeriesNumber } = displaySet;
-    const { mean, stdDev, max, area, Modality, areaUnit, modalityUnit } = targetStats;
+    const { mean, stdDev, max, area, Modality, areaUnit, modalityUnit, length, perimeter } =
+      targetStats;
 
     annotations.push({
       SeriesInstanceUID,
@@ -131,6 +132,8 @@ function getMappedAnnotations(annotation, displaySetService) {
       max,
       area,
       areaUnit,
+      length,
+      perimeter,
     });
   });
 
@@ -208,18 +211,25 @@ function getDisplayText(mappedAnnotations, displaySet) {
   const instanceText = InstanceNumber ? ` I: ${InstanceNumber}` : '';
   const frameText = displaySet.isMultiFrame ? ` F: ${frameNumber}` : '';
 
-  const roundedArea = utils.roundNumber(area || 0, 2);
-  displayText.primary.push(`${roundedArea} ${getDisplayUnit(areaUnit)}`);
+  if (area && !isNaN(area)) {
+    const roundedArea = utils.roundNumber(area || 0, 2);
+    displayText.primary.push(`${roundedArea} ${getDisplayUnit(areaUnit)}`);
+  }
 
   // we don't have max yet for splines rois
-  // mappedAnnotations.forEach(mappedAnnotation => {
-  //   const { unit, max, SeriesNumber } = mappedAnnotation;
+  mappedAnnotations.forEach(mappedAnnotation => {
+    const { unit, max, SeriesNumber, length } = mappedAnnotation;
 
-  //   const maxStr = getStatisticDisplayString(max, unit, 'max');
+    if (!isNaN(max)) {
+      const maxStr = getStatisticDisplayString(max, unit, 'max');
+      displayText.primary.push(maxStr);
+    } else if (length && !isNaN(length)) {
+      const lengthStr = getStatisticDisplayString(length, unit, 'length');
+      displayText.primary.push(lengthStr);
+    }
 
-  //   displayText.primary.push(maxStr);
-  //   displayText.secondary.push(`S: ${SeriesNumber}${instanceText}${frameText}`);
-  // });
+    displayText.secondary.push(`S: ${SeriesNumber}${instanceText}${frameText}`);
+  });
 
   return displayText;
 }
