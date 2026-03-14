@@ -134,11 +134,11 @@ export default function getToolbarModule({ commandsManager, servicesManager }: w
           };
         }
 
-        const isArray = Array.isArray(button.commands);
+        const isArray = Array.isArray(button.props.commands);
 
         const synchronizerType = isArray
-          ? button.commands?.[0].commandOptions.type
-          : button.commands?.commandOptions.type;
+          ? button.props.commands?.[0].commandOptions.type
+          : button.props.commands?.commandOptions.type;
 
         synchronizers = syncGroupService.getSynchronizersOfType(synchronizerType);
 
