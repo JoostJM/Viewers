@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../Dialog';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { cn } from '../../lib/utils';
 
 export interface ModalProps {
@@ -30,11 +31,15 @@ const Modal: React.FC<ModalProps> = ({
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
     >
       <DialogContent className={containerClassName}>
-        {title && (
-          <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
-          </DialogHeader>
-        )}
+        { title ?
+          (
+            <DialogHeader>
+              <DialogTitle>{title}</DialogTitle>
+            </DialogHeader>
+          ) :
+          (
+            <VisuallyHidden asChild><DialogTitle/></VisuallyHidden>
+          )}
         <div className={cn('mt-2')}>{children}</div>
       </DialogContent>
     </Dialog>

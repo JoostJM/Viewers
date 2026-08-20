@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../components/Dialog/Dialog';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { cn } from '../lib/utils';
 
 export interface ManagedDialogProps {
@@ -64,7 +65,14 @@ const ManagedDialog: React.FC<ManagedDialogProps> = ({
             : {}),
         }}
       >
-        {!unstyled && <DialogHeader>{title && <DialogTitle>{title}</DialogTitle>}</DialogHeader>}
+        {unstyled || !title ?
+          (
+              <VisuallyHidden asChild><DialogTitle/></VisuallyHidden>
+          ) :
+          (
+            !unstyled && <DialogHeader>{title && <DialogTitle>{title}</DialogTitle>}</DialogHeader>
+          )
+        }
         <DialogContentComponent
           {...contentProps}
           hide={() => onClose(id)}
